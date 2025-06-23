@@ -4,7 +4,7 @@ class CartItem {
     this.name = name;
     this.price = price;
     this.img = img;
-    this.quality = quality;
+    this.quality = quality || 1;
   }
 }
 export default CartItem;

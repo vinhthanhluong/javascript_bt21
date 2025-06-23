@@ -95,11 +95,15 @@ const renderProductCart = (data) => {
                     <p class="cart-tt">${product.name}</p>
                     <p class="cart-price"><span>${product.price}</span>đ</p>
                     <div class="cart-quality">
-                        <span class="cart-minus">-</span>
+                        <span class="cart-minus" onclick="onMinus(${
+                          product.id
+                        })">-</span>
                         <input type="text" class="fcontrol" value="${
                           product.quality || 1
                         }" min="1">
-                        <span class="cart-plus">+</span>
+                        <span class="cart-plus" onclick="onPlus(${
+                          product.id
+                        })">+</span>
                     </div>
                     <p class="cart-delete" onclick="onDelete(${
                       product.id
@@ -114,7 +118,7 @@ const showProductCart = () => {
   cartList.arr = getLocal();
   renderProductCart(cartList.arr);
 
-  const total = cartList.arr.reduce((total, item) => total + item.price, 0);
+  const total = cartList.arr.reduce((total, item) => total + (item.price * (item.quality || 1)), 0);
   document.querySelector(".cart-tl-sum span").innerHTML = total;
 };
 showProductCart();
@@ -125,14 +129,21 @@ const onCart = (id) => {
 
   promise
     .then((rs) => {
-      cartList.addProduct(rs.data);
+      const dataNew = new CartItem(
+        rs.data.id,
+        rs.data.name,
+        rs.data.price,
+        rs.data.img,
+        1
+      );
+      cartList.addProduct(dataNew);
       setLocal(cartList.arr);
       showProductCart();
     })
     .catch((er) => {
       console.log(er);
     });
-};
+   };
 window.onCart = onCart;
 
 document.querySelector(".cart .cart-close").onclick = function () {
@@ -145,3 +156,22 @@ const onDelete = (id) => {
   showProductCart();
 };
 window.onDelete = onDelete;
+
+const onPlus = (id) => {
+  const get = cartList.getIdProduct(id);
+  get[0].quality += 1;
+  cartList.updateProduct(get[0]);
+  setLocal(cartList.arr);
+  showProductCart();
+};
+window.onPlus = onPlus;
+
+const onMinus = (id) => {
+  const get = cartList.getIdProduct(id);
+  if(get[0].quality < 1) return;
+  get[0].quality -= 1;
+  cartList.updateProduct(get[0]);
+  setLocal(cartList.arr);
+  showProductCart();
+};
+window.onMinus = onMinus;

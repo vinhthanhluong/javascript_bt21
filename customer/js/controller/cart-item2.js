@@ -1,6 +1,6 @@
 class CartItem2 {
-  constructor(data, quality) {
-    this.arr = data;
+  constructor(quality) {
+    this.arr = [];
     this.quality = quality;
   }
 }

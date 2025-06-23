@@ -8,8 +8,13 @@ class CartList {
   removeProduct(id) {
     this.arr = this.arr.filter((item) => item.id != id);
   }
-  getIdProduct() {}
-  updateProduct() {}
+  getIdProduct(id) {
+    return this.arr.filter((item) => item.id == id);
+  }
+  updateProduct(item) {
+    const idProduct = this.arr.findIndex((food) => food.id == item.id);
+    this.arr[idProduct] = item;
+  }
 }
 
 export default CartList;
