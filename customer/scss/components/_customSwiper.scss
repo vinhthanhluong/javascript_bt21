@@ -1,0 +1,17 @@
+.swiper {
+    .swiper-pagination {
+        bottom: 0;
+    }
+
+    .swiper-pagination-bullet {
+        width: 6px;
+        height: 6px;
+        margin: 0 6px;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: $main-cl;
+        width: 8px;
+        height: 8px;
+    }
+}

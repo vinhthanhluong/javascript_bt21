@@ -1,0 +1,100 @@
+.main-title-wrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	.main-title {
+		margin-bottom: 0;
+	}
+}
+.main-title {
+	transition: all .3s ease;
+    line-height: 1.5;
+}
+.--m-cl {
+	color: $main-cl;
+}
+.--w-cl {
+	color: $t-w-cl;
+}
+.tt-65 {
+	@include fz-65;
+}
+.tt-60 {
+	@include fz-60;
+}
+.tt-50 {
+	@include fz-50;
+}
+.tt-46 {
+	@include fz-46;
+}
+.tt-45 {
+	@include fz-45;
+}
+.tt-40 {
+	@include fz-40;
+}
+.tt-36 {
+	@include fz-36;
+}
+.tt-30 {
+	@include fz-30;
+}
+.tt-28 {
+	@include fz-28;
+}
+.tt-25 {
+	@include fz-25;
+}
+.tt-24 {
+	@include fz-24;
+}
+.tt-22 {
+	@include fz-22;
+}
+.tt-20 {
+	@include fz-20;
+}
+.tt-18 {
+	@include fz-18;
+}
+.tt-16 {
+	@include fz-16;
+}
+.tt-14 {
+	font-size: 14px;
+}
+.tt-12{
+	font-size: 12px;
+}
+.t-center {
+	text-align: center;
+}
+.t-left {
+	text-align: left;
+}
+.t-right {
+	text-align: right;
+}
+.t-justify {
+	text-align: justify;
+}
+.t-uppercase {
+	text-transform: uppercase;
+}
+.t-capitalize {
+	text-transform: capitalize;
+}
+.f-italic{
+	font-style: italic;
+}
+.f-bold {
+	font-weight: bold;
+}
+.f-light {
+	font-weight: lighter;
+}
+.f-normal{
+    font-weight: normal;
+}

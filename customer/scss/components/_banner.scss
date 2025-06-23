@@ -1,0 +1,162 @@
+.banners {
+    background-image: url("../img/bg-banners.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    clip-path: ellipse(73% 59% at 50% 40%);
+
+    @include max-media($bk-1024) {
+        height: 500px;
+    }
+
+    @include max-media($bk-576) {
+        clip-path: ellipse(90% 59% at 50% 40%);
+        height: 400px;
+    }
+
+    .title {
+        max-width: 876px;
+        margin: 0 auto;
+        line-height: 1.15;
+        transition: all 0.3s ease;
+
+        @include max-media($bk-576) {
+            font-size: 24px;
+        }
+
+        span {
+            color: #f37131;
+            font-weight: bold;
+        }
+    }
+
+    .banners-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding-bottom: 190px;
+        @include max-media($bk-576) {
+            padding-bottom: 0;
+            align-items: flex-start;
+            padding-top: 110px;
+        }
+    }
+
+    .container {
+        height: 100%;
+    }
+
+    .img-phone {
+        width: 830px;
+        height: 479px;
+        position: relative;
+        margin: 0 auto;
+        max-width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: translate(0, 50%);
+
+        @include max-media($bk-d-1440) {
+            transform: translate(0, 50%) scale(1);
+        }
+
+        @include max-media($bk-d-1200) {
+            transform: translate(0%, 50%) scale(0.8);
+        }
+
+        @include max-media($bk-d-992) {
+            transform: translate(0%, 50%) scale(0.7);
+            height: 400px;
+        }
+
+        @include max-media($bk-d-768) {
+            transform: translate(0%, 40%) scale(0.9);
+            width: 500px;
+            height: 380px;
+        }
+
+        @include max-media($bk-576) {
+            transform: translate(0%, 40%) scale(0.9);
+            width: 400px;
+            height: 320px;
+        }
+    }
+
+    .ig-dt {
+        position: absolute;
+        bottom: 0;
+        max-height: 479px;
+
+        @include max-media($bk-d-768) {
+            transform: scale(1);
+            width: calc(100% / 2);
+        }
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .phone-one {
+        left: 0;
+    }
+
+    .phone-two {
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        bottom: 75px;
+
+        @include min-media($bk-768) {
+            animation: slide-in-bottom 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            animation-delay: 0.6s;
+        }
+
+        @include max-media($bk-576) {
+            bottom: 60px;
+        }
+    }
+
+    .phone-three {
+        right: 0;
+    }
+
+    .ig-vit {
+        position: absolute;
+        bottom: 10px;
+        left: 60%;
+        z-index: 1;
+        transform: translate(-50%, 0);
+
+        @include max-media($bk-d-1200) {
+            transform: scale(0.8);
+            transform-origin: left;
+        }
+
+        @include max-media($bk-d-1200) {
+            transform: scale(0.6);
+        }
+
+        @include max-media($bk-d-768) {
+            transform: scale(0.5);
+            transform-origin: left bottom;
+        }
+
+        @include max-media($bk-576) {
+            transform: scale(0.4);
+        }
+
+        .img-vit {
+            @include min-media($bk-768) {
+                animation: bounceInDown 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+                animation-delay: 1.2s;
+            }
+        }
+    }
+}

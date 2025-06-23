@@ -1,0 +1,198 @@
+@font-face {
+    font-family: 'SVN-Biennale Hair';
+    src: url('SVN-Biennale-HairItalic.woff2') format('woff2'),
+        url('SVN-Biennale-HairItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale Hair';
+    src: url('SVN-Biennale-Hair.woff2') format('woff2'),
+        url('SVN-Biennale-Hair.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-HeavyItalic.woff2') format('woff2'),
+        url('SVN-Biennale-HeavyItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale Book';
+    src: url('SVN-Biennale-Book.woff2') format('woff2'),
+        url('SVN-Biennale-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-Heavy.woff2') format('woff2'),
+        url('SVN-Biennale-Heavy.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-LightItalic.woff2') format('woff2'),
+        url('SVN-Biennale-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-MediumItalic.woff2') format('woff2'),
+        url('SVN-Biennale-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-Medium.woff2') format('woff2'),
+        url('SVN-Biennale-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-Light.woff2') format('woff2'),
+        url('SVN-Biennale-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-Italic.woff2') format('woff2'),
+        url('SVN-Biennale-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-Regular.woff2') format('woff2'),
+        url('SVN-Biennale-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-SemiBoldItalic.woff2') format('woff2'),
+        url('SVN-Biennale-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-ThinItalic.woff2') format('woff2'),
+        url('SVN-Biennale-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-SemiBold.woff2') format('woff2'),
+        url('SVN-Biennale-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-Thin.woff2') format('woff2'),
+        url('SVN-Biennale-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-UltraLightItalic.woff2') format('woff2'),
+        url('SVN-Biennale-UltraLightItalic.woff') format('woff');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-UltraLight.woff2') format('woff2'),
+        url('SVN-Biennale-UltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-BlackItalic.woff2') format('woff2'),
+        url('SVN-Biennale-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-Black.woff2') format('woff2'),
+        url('SVN-Biennale-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-BoldItalic.woff2') format('woff2'),
+        url('SVN-Biennale-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale';
+    src: url('SVN-Biennale-Bold.woff2') format('woff2'),
+        url('SVN-Biennale-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SVN-Biennale Book';
+    src: url('SVN-Biennale-BookItalic.woff2') format('woff2'),
+        url('SVN-Biennale-BookItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
