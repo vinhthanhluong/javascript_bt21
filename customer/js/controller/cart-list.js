@@ -9,11 +9,13 @@ class CartList {
     this.arr = this.arr.filter((item) => item.id != id);
   }
   getIdProduct(id) {
-    return this.arr.filter((item) => item.id == id);
+    return this.arr.find((item) => item.id == id);
   }
-  updateProduct(item) {
-    const idProduct = this.arr.findIndex((food) => food.id == item.id);
-    this.arr[idProduct] = item;
+  updateQuality(id, qal) {
+    const item = this.arr.find((item) => item.id == id);
+    if (item) {
+      item.quality = qal;
+    }
   }
 }
 

@@ -8,6 +8,16 @@ const getEle = (id) => document.getElementById(id);
 const servicesPro = new ProductServices();
 const cartList = new CartList();
 
+const formatMoney = (val) => {
+  return new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  })
+    .format(val)
+    .replace("₫", "đ")
+    .trim();
+};
+
 const renderListProduct = (data) => {
   return data
     .map((product) => {
@@ -15,11 +25,15 @@ const renderListProduct = (data) => {
       return `<div class="product-item">
                 <p class="product-news">${product.type}</p>
                 <div class="product-img">
-                    <img src="${img}" alt="${product.name}" onerror="this.onerror=null;this.src='https://placehold.jp/600x600.png';">
+                    <img src="${img}" alt="${
+        product.name
+      }" onerror="this.onerror=null;this.src='https://placehold.jp/600x600.png';">
                 </div>
                 <div class="product-txt">
                     <p class="product-tt">${product.name}</p>
-                    <p class="product-price"><span>${product.price}</span>đ</p>
+                    <p class="product-price"><span>${formatMoney(
+                      product.price
+                    )}</span></p>
                     <div class="product-if">
                         <dl>
                             <dt>Màn hình:</dt>
@@ -70,6 +84,20 @@ const showListProduct = () => {
 };
 showListProduct();
 
+// Select Product
+getEle("typeProduct").onchange = function () {
+  const promise = servicesPro.getListProduct();
+  promise
+  .then((rs) => {
+      if(this.value == 'all') return getEle("loadListProduct").innerHTML = renderListProduct(rs.data);
+
+      const arrSelect = rs.data.filter(item => item.type.toLowerCase() == this.value) ;
+      getEle("loadListProduct").innerHTML = renderListProduct(arrSelect);
+    })
+    .catch((er) => {
+    });
+};
+
 // Cart
 document.querySelector(".header-rt a").onclick = function () {
   document.querySelector(".cart").classList.add("active");
@@ -93,7 +121,9 @@ const renderProductCart = (data) => {
                 </div>
                 <div class="cart-txt">
                     <p class="cart-tt">${product.name}</p>
-                    <p class="cart-price"><span>${product.price}</span>đ</p>
+                    <p class="cart-price"><span>${formatMoney(
+                      product.price
+                    )}</span></p>
                     <div class="cart-quality">
                         <span class="cart-minus" onclick="onMinus(${
                           product.id
@@ -118,8 +148,12 @@ const showProductCart = () => {
   cartList.arr = getLocal();
   renderProductCart(cartList.arr);
 
-  const total = cartList.arr.reduce((total, item) => total + (item.price * (item.quality || 1)), 0);
-  document.querySelector(".cart-tl-sum span").innerHTML = total;
+  const total = cartList.arr.reduce(
+    (total, item) => total + item.price * (item.quality || 1),
+    0
+  );
+
+  document.querySelector(".cart-tl-sum span").innerHTML = formatMoney(total);
 };
 showProductCart();
 
@@ -129,6 +163,19 @@ const onCart = (id) => {
 
   promise
     .then((rs) => {
+      const item = cartList.getIdProduct(id);
+      // const isCart = cartList.arr.filter((el) => el.id == item.id);
+      // console.log(!!isCart);
+      if (item) {
+        console.log("true");
+
+        let qualityNew = item.quality + 1;
+        cartList.updateQuality(id, qualityNew);
+        setLocal(cartList.arr);
+        showProductCart();
+        return;
+      }
+
       const dataNew = new CartItem(
         rs.data.id,
         rs.data.name,
@@ -143,7 +190,7 @@ const onCart = (id) => {
     .catch((er) => {
       console.log(er);
     });
-   };
+};
 window.onCart = onCart;
 
 document.querySelector(".cart .cart-close").onclick = function () {
@@ -158,19 +205,21 @@ const onDelete = (id) => {
 window.onDelete = onDelete;
 
 const onPlus = (id) => {
-  const get = cartList.getIdProduct(id);
-  get[0].quality += 1;
-  cartList.updateProduct(get[0]);
+  const item = cartList.getIdProduct(id);
+
+  let qualityNew = item.quality + 1;
+  cartList.updateQuality(id, qualityNew);
   setLocal(cartList.arr);
   showProductCart();
 };
 window.onPlus = onPlus;
 
 const onMinus = (id) => {
-  const get = cartList.getIdProduct(id);
-  if(get[0].quality < 1) return;
-  get[0].quality -= 1;
-  cartList.updateProduct(get[0]);
+  const item = cartList.getIdProduct(id);
+  if (item.quality < 1) return;
+
+  let qualityNew = item.quality - 1;
+  cartList.updateQuality(id, qualityNew);
   setLocal(cartList.arr);
   showProductCart();
 };
