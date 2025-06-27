@@ -1,0 +1,71 @@
+html {
+	.mfp-bg {
+		z-index: 999998;
+	}
+	.mfp-wrap {
+		z-index: 999999;
+	}
+}
+.mfp-zoom-in {
+	.mfp-content {
+		opacity: 0;
+		transition: all 0.2s ease-in-out;
+		transform: scale(0.8);
+	}
+	&.mfp-bg {
+		opacity: 0;
+		transition: all 0.3s ease-out;
+	}
+	&.mfp-ready {
+		.mfp-content {
+			opacity: 1;
+			transform: scale(1);
+		}
+		&.mfp-bg {
+			opacity: 0.8;
+		}
+	}
+	&.mfp-removing {
+		.mfp-content {
+			transform: scale(0.8);
+			opacity: 0;
+		}
+		&.mfp-bg {
+			opacity: 0;
+		}
+	}
+}
+.mfp-container {
+	padding: 0;
+	overflow-y: auto;
+	@include custom-scrollbar(2px);
+}
+.mfp-content {
+	max-width: 600px;
+	.mfp-close {
+		color: $main-cl;
+		transition: 0.3s;
+		right: 0;
+	}
+	.popup-wrap {
+		@include flex-mid;
+		> div {
+			width: 100%;
+		}
+	}
+}
+.stop-scrolling {
+	position: relative;
+	overflow: hidden;
+	touch-action: none;
+	-webkit-overflow-scrolling: auto;
+}
+.popup-wrap {
+	display: none;
+}
+.swal2-popup.swal2-show {
+	font-size: 14px;
+}
+.swal2-shown {
+	padding-right: 0 !important;
+}

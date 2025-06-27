@@ -1,0 +1,311 @@
+header {
+    
+}
+.sidebar_active {
+    --width-sidebar: 80px;
+    .sidebar {
+        &__menu {
+            .txt {
+                color: transparent;
+            }
+        }
+        &__logo {
+            padding: 15px 10px;
+        }
+    }
+}
+.sidebar {
+    width: $width-sidebar;
+    background-color: $main-cl;
+    font-size: 16px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    padding-left: 0.625em;
+    // overflow: hidden;
+    transition: 0.5s;
+    .sidebar__close {
+        @include size(35px);
+        position: absolute;
+        right: 10px;
+        top: -5px;
+        bottom: 0;
+        margin: auto;
+        i {
+            font-size: 40px;
+        }
+    }
+    &.active {
+        --width-sidebar: 80px;
+    }
+    &__logo {
+        @include flex-mid;
+        height: 74px;
+        padding: 15px 24px;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+        img {
+            width: 67px;
+            transition: .5s;
+        }
+    }
+    &__menu {
+        font-size: 16px;
+        padding: 0.625em 0;
+        li {
+            font-size: 1em;
+            label {
+                display: block;
+                font-size: 0.875em;
+            }
+            .icon {
+                line-height: 1em;
+                margin-bottom:1px;
+                width: 3.125em;
+                text-align: center;
+                flex-shrink: 0;
+                i {
+                    font-size: 1.5em;
+                    color: $sec-cl;
+                }
+            }
+            &.caption {
+                label {
+                    padding: 1.25em 20px 0.625em;
+                }
+            }
+            > * {
+                padding: 1em 3px 0.9375em;
+            }
+            a {
+                display: flex;
+                align-items: center;
+                gap: 1.25em;
+                white-space: nowrap;
+                position: relative;
+                z-index: 1;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: rem(-20);
+                    right: 0;
+                    width: 20px;
+                    height: 20px;
+                    border-bottom-right-radius: 20px;
+                    box-shadow: 5px 5px 0 5px $sec-cl;
+                    background-color: transparent;
+                    z-index: -1;
+                    pointer-events: none;
+                    opacity: 0;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: rem(-20);
+                    right: 0;
+                    width: 20px;
+                    height: 20px;
+                    border-top-right-radius: 20px;
+                    box-shadow: 5px -5px 0 5px $sec-cl;
+                    background-color: transparent;
+                    z-index: -1;
+                    pointer-events: none;
+                    opacity: 0;
+                }
+            }
+            &.active {
+                background-color: $sec-cl;
+                border-radius: 50px 0 0 50px;
+                a {
+                    color: $w-cl;
+                    &::before, &::after {
+                        opacity: 1;
+                    }
+                    .icon {
+                        position: relative;
+                        z-index: 1;
+                        &::before{
+                            content: '';
+                            position: absolute;
+                            inset: 5px;
+                            width: 48px;
+                            aspect-ratio: 1/1;
+                            background-color: $main-cl;
+                            border-radius: 50%;
+                            transition: 0.5s;
+                            z-index: -1;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                        img {
+                            filter: brightness(0) invert(1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+header {
+    padding: rem(15) 0;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 100;
+    width: calc(100% - var(--width-sidebar) - (1.875rem * 2));
+    &::before {
+        content: '';
+        position: absolute;
+        width: calc(100% + (1.875rem * 2));
+        height: 100%;
+        top: 0;
+        left: -1.875rem;
+        background-color: rgba($color: #fff, $alpha: 0.3);
+        backdrop-filter: blur(10px);
+        z-index: -1;
+    }
+}
+
+.scrolled {
+    header {
+        
+    }
+}
+.header {
+    &__left {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        &--search {
+            position: relative;
+             @include size(50px);
+             border-radius: 60px;
+             background-color: $main-cl;
+             cursor: pointer;
+             transition: 0.5s;
+             overflow: hidden;
+             &.active {
+                width: 360px;
+             }
+            .icon {
+                position: absolute;
+                @include size(50px);
+                border-radius: 60px;
+                background-color: $main-cl;
+                top: 0;
+                left: 0;
+                
+                @include flex-mid;   
+                z-index: 100;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    @include size(20px);
+                    border: 3px solid $sec-cl;
+                    border-radius: 50%;
+                    transform: translate(-4px, -4px);
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    @include size(3px, 12px);
+                    background-color: $sec-cl;
+                    transform: translate(6px, 6px) rotate(315deg);
+                }
+            }
+            .input {
+                position: relative;
+                width: 310px;
+                height: 50px;
+                left: 50px;
+                @include flex-mid;
+                input {
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    outline: none;
+                    font-size: rem(18);
+                    padding: 10px;
+                }
+            }
+            .clear {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                @include size(15px);
+                right: 15px;
+                cursor: pointer;
+                @include flex-mid;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 1px; 
+                    height: 15px;
+                    background-color: $sec-cl;
+                    transform: rotate(45deg);
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 1px; 
+                    height: 15px;
+                    background-color: $sec-cl;
+                    transform: rotate(315deg);
+                }
+            }
+        }
+    }
+    &__right {
+        display: flex;
+        gap: 15px;
+        &--notification, &--users {
+            @include size(50px);
+            background-color: $main-cl;
+            @include flex-mid;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        &--notification {
+            position: relative;
+            z-index: 1;
+            &.active .fa-bell {
+                animation: pulse 0.7s ease-in-out infinite alternate;
+                color: #f39c12;
+            }
+            .num {
+                position: absolute;
+                color: #fff;
+                background-color: #f00;
+                @include size(20px);
+                @include flex-mid;
+                font-size: 12px;
+                border-radius: 50%;
+                top: -2px;
+                right: -2px;
+            }
+        }
+    }
+}
+
+.menu__toggle {
+    cursor: pointer;
+    @include size(rem(40));
+    text-align: center;
+    i {
+        width: 100%;
+        font-size: 40px;
+        color: $main-cl;
+    }
+}
+
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}

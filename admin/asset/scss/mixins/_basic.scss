@@ -1,0 +1,165 @@
+@import './functions';
+
+// Variable
+$main-cl: var(--main-cl);
+$sec-cl: var(--sec-cl);
+$w-cl: var(--w-cl);
+$roboto: var(--font-roborto);
+$width-sidebar: var(--width-sidebar);
+
+/*==========================================================================*/
+/*                               M I X I N                                  */
+/*==========================================================================*/
+
+@mixin size($width, $height: $width) {
+   width: $width;
+   height: $height;
+}
+
+@mixin pos-mid() {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+@mixin pos-full() {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+}
+
+@mixin flex-mid() {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+}
+
+@mixin hidden() {
+   opacity: 0;
+   visibility: hidden;
+}
+
+@mixin visible() {
+   opacity: 1;
+   visibility: visible;
+}
+
+@mixin line-clamp($args) {
+   display: -webkit-box;
+   -webkit-line-clamp: $args;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+}
+
+@mixin break-text($width) {
+   white-space: nowrap;
+   word-break: keep-all;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   width: $width;
+}
+
+@mixin lh($lh, $fz) {
+   line-height: ($lh / $fz);
+}
+
+@mixin arrow($color: #333, $width, $height: $width, $direction: right) {
+   @if ($direction == left) {
+       border-top: calc($width / 2) solid transparent;
+       border-bottom: calc($width / 2) solid transparent;
+       border-right: $height solid $color;
+   } @else if ($direction == top) {
+       border-left: calc($width / 2) solid transparent;
+       border-right: calc($width / 2) solid transparent;
+       border-bottom: $height solid $color;
+   } @else if ($direction == bottom) {
+       border-left: calc($width / 2) solid transparent;
+       border-right: calc($width / 2) solid transparent;
+       border-top: $height solid $color;
+   } @else {
+       border-top: calc($width / 2) solid transparent;
+       border-bottom: calc($width / 2) solid transparent;
+       border-left: $height solid $color;
+   }
+}
+
+@mixin arrow-line($color: #333, $width: 10, $size: 3px, $direction: right) {
+   @include size(calc($width / 100 * 70.725 * 1px));
+   transform: rotate(45deg);
+
+   @if ($direction == left) {
+       border-bottom: solid $size $color;
+       border-left: solid $size $color;
+   } @else if ($direction == top) {
+       border-top: solid $size $color;
+       border-left: solid $size $color;
+   } @else if ($direction == bottom) {
+       border-bottom: solid $size $color;
+       border-right: solid $size $color;
+   } @else {
+       border-top: solid $size $color;
+       border-right: solid $size $color;
+   }
+}
+
+@mixin circle($size: 10px, $color: #333) {
+   @include size($size);
+   background: $color;
+   border-radius: 100%;
+}
+
+@mixin stroke($color, $width: 1px) {
+   $width: $width + 0;
+   $shadow: 0 0 0 transparent;
+   $i: 0;
+   $w: 1;
+
+   @while ($i < $width) {
+      $i: $i + 1;
+      $j: 0;
+      $w: $w + 2;
+
+      @for $r from 1 through $w {
+         @for $c from 1 through $w {
+            $x: $c - ceil($w / 2);
+            $y: $r - ceil($w / 2);
+
+            $shadow: #{$shadow},
+            #{$x}px #{$y}px 0 $color;
+         }
+      }
+   }
+
+   text-shadow: $shadow;
+}
+
+@mixin calcfont($px, $min: 22px, $max: 28px, $base: 1920) {
+   font-size: max(min(calc(#{$px} / #{$base} * 100vw),#{$max}),#{$min});
+}
+
+@mixin forward($property, $Man_hinh_lon_nhat, $Gia_tri_cho_man_hinh_lon_nhat, $Man_hinh_nho_nhat, $Gia_tri_cho_man_hinh_nho_nhat, $view: vw) {
+   --max-screen: #{$Man_hinh_lon_nhat};
+   --max-value: #{$Gia_tri_cho_man_hinh_lon_nhat};
+   --min-screen: #{$Man_hinh_nho_nhat};
+   --min-value: #{$Gia_tri_cho_man_hinh_nho_nhat};
+   --value: max(min(calc((var(--max-value) - var(--min-value)) * ((100vw - var(--min-screen) * 1px) / (var(--max-screen) - var(--min-screen))) + calc(var(--min-value) * 1px)), calc(var(--max-value) * 1px)), calc(var(--min-value) * 1px));
+   #{$property}: var(--value);
+}
+
+@mixin reverse($property, $maxvalue, $minvalue, $maxv, $minv, $view: vw) {
+   --max-screen: #{$minvalue};
+   --max-value: #{$maxvalue};
+   --min-screen: #{$minv};
+   --min-value: #{$maxv};
+   --value: max(var(--max-value) * 1px, min(calc(var(--max-value) * 1px + (var(--max-screen) - var(--max-value)) * ((100#{$view} - var(--min-value) * 1px) / (var(--min-screen) - var(--min-value)))), var(--max-screen) * 1px));
+   #{$property}: var(--value);
+}
+
+// convert px to rem, mặc định 16px
+@function rem($px, $base: 16) {
+  @return ($px / $base) * 1rem;
+}

@@ -1,0 +1,12 @@
+.lg-outer {
+	.lg-thumb {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.lg-thumb-item {
+		&:hover,
+		&.active {
+			border-color: $main-cl;
+		}
+	}
+}

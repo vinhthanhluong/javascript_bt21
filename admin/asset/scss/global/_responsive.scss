@@ -1,0 +1,94 @@
+/*==========================================================================*/
+/*                        M O B I L E    D E V I C E                        */
+/*==========================================================================*/
+
+@media (width <= 768px) {
+    .pc {
+        display: none;
+    }
+    .sp {
+        display: block;
+    }
+    .header__right--notification, .header__right--users {
+        @include size(40px);
+    }
+    .header__left--search {
+        @include size(40px);
+    }
+    .header__left--search .icon {
+        @include size(40px);
+        &::before {
+            @include size(16px);
+            transform: translate(-3px, -3px);
+        }
+        &::after {
+            transform: translate(5px, 5px) rotate(315deg);
+        }
+    }
+
+    header {
+        width: calc(100% - 40px) !important;
+        left: 20px;
+        right: 20px;
+        padding: 10px 0;
+    }
+    .wrapper__main {
+        padding: 0 20px 100px;
+    }
+
+    .sales {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .products {
+        &__h3 {
+            font-size: 8px;
+        }
+        &__cnt {
+            padding: 15px;
+        }
+        &__title {
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 10px;
+            .products__add {
+                width: 100px;
+                height: 40px;
+                font-size: 14px;
+                align-self: flex-end;
+            }
+        }
+        &__table--scroll  {
+            .w20 {
+                width: 15%;
+            }
+            th {
+                font-size: 16px;
+            }
+            td {
+                font-size: 14px;
+            }
+            table {
+                width: 1050px;
+            }
+        }
+    }
+}
+/* END min-width:1px && screen-max:750px */
+
+@media (375px <= width <= 768px) {
+    .sp375 {
+        display: none;
+    }
+}
+/* END min-width:375px && screen-max:750px */
+
+@media (475px <= width <= 768px) {
+    .sp475 {
+        display: none;
+    }
+
+    .sales {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* END min-width:375px && screen-max:750px */

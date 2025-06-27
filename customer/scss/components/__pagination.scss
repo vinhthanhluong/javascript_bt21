@@ -1,0 +1,41 @@
+.pagination {
+	margin-top: 30px;
+	text-align: center;
+	li {
+		display: inline-block;
+		vertical-align: middle;
+		.page-numbers {
+			width: 40px;
+			height: 40px;
+			border-radius: 100%;
+			border: 1px solid $border-cl;
+			//color: $t-b-cl;
+			font-weight: bold;
+			transition: all .3 ease;
+			@include lh(24, 14);
+			@include flex-mid;
+			&.current {
+				background-color: $main-cl;
+				color: $t-w-cl;
+				border: 1px solid transparent;
+			}
+			&:hover {
+				background-color: $main-cl;
+				color: $t-w-cl;
+				border: 1px solid transparent;
+			}
+		}
+
+		.page-arrow{
+			width: 40px;
+			height: 40px;
+			@include flex-mid;
+			font-size: 16px;
+			transition: all .3 ease;
+			&:hover {
+				background-color: $main-cl;
+				color: $t-w-cl;
+			}
+		}
+	}
+}

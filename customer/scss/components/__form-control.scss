@@ -1,0 +1,25 @@
+.f-control {
+	appearance: none;
+	font: inherit;
+	color: inherit;
+	outline: none;
+	border-radius: 5px;
+	width: 100%;
+	border: 1px solid $border-cl;
+	background-color: $bg-w-cl;
+	color: $t-b-cl;
+	padding: 12px 15px;
+	height: 44px;
+	&::placeholder {
+		color: $g-cl;
+	}
+	&:disabled {
+		cursor: not-allowed;
+	}
+	&:focus {
+		outline: none;
+	}
+	&.wpcf7-not-valid {
+		border-color: #f00;
+	}
+}

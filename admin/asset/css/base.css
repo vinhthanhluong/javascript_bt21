@@ -1,0 +1,151 @@
+html {
+    color: #000;
+    background: #fff;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input,
+button,
+textarea,
+p,
+table,
+tr,
+th,
+td {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: none;
+}
+
+img {
+    border: 0;
+}
+
+address,
+strong,
+th,
+optgroup {
+    font-style: normal;
+    font-weight: normal;
+}
+li {
+    list-style: none;
+}
+
+caption,
+th {
+    text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal;
+    line-height: 1.0;
+}
+sup {
+    vertical-align: baseline;
+}
+
+sub {
+    vertical-align: baseline;
+}
+
+/*because legend doesn't inherit in IE */
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
+/*@purpose To enable resizing for IE */
+/*@branch For IE6-Win, IE7-Win */
+input,
+button,
+textarea,
+select {
+    font-size: 100%;
+}
+
+/* Setting
+------------------------------------------------------------------------*/
+
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+th,
+td {
+    border: 1px solid #999;
+    padding: .5em;
+}
+
+th {
+    font-weight: bold;
+    text-align: center;
+}
+
+address {
+    font-style: normal;
+    line-height: 1.0;
+}
+
+.clear {
+    clear: both;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+/* Hides from IE-mac \*/
+
+* html .clearfix {
+    height: 1%;
+}
+
+.clearfix {
+    display: block;
+}
+
+/* End hide from IE-mac */

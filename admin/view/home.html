@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <!-- FAVICON -->
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+
+    <!-- STYLESHEET -->
+         <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+    <link rel="stylesheet" href="../asset/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" media="all" href="../asset/css/styles.css" />
+    <link rel="stylesheet" media="all" href="../asset/css/responsive.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body id="index">
+    <div id="wrapper">
+        <div class="wrapper__content">
+            <aside class="sidebar">
+                <div class="sidebar__logo">
+                    <a href="#"><img src="../asset/img/logo-header.svg" width="130" height="35" alt=""></a>
+                    <span class="sidebar__close sp"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+                </div>
+                <div class="sidebar__content">
+                    <div class="sidebar__menu">
+                        <ul>
+                            <li>
+                                <a href="./products.html"><span class="icon"><i class="fa fa-mobile" aria-hidden="true"></i></span><span class="txt">Quản lý sản phẩm</span></a>
+                            </li>
+                            <li class="disable">
+                                <a href="./home"><span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span><span class="txt">Bảng điều khiển</span></a>
+                            </li>
+                            <li class="disable">
+                                <a href="#"><span class="icon"><i class="fa fa-product-hunt" aria-hidden="true"></i></span><span class="txt">Đơn hàng hôm nay</span></a>
+                            </li>
+                            <li class="disable">
+                                <a href="#"><span class="icon"><i class="fa fa-fire" aria-hidden="true"></i></span><span class="txt">Sản phẩm bán chạy</span></a>
+                            </li>
+                            <li class="disable">
+                                <a href="#"><span class="icon"><i class="fa fa-file-text" aria-hidden="true"></i></span><span class="txt">Hóa đơn</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+            <div class="wrapper__main">
+                <header id="header">
+                    <div class="header__left">
+                        <div class="menu__toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                        <div id="search__btn" class="header__left--search">
+                            <div class="icon"></div>
+                            <div class="input">
+                                <input id="mysearch" type="text" placeholder="Tìm kiếm...">
+                            </div>
+                            <span class="clear" onclick="document.getElementById('mysearch').value=''"></span>
+                        </div>
+                    </div>
+                    <div class="header__right">
+                        <div class="header__right--notification">
+                            <span class="num">9</span>
+                            <i class="fa fa-bell" aria-hidden="true"></i>
+                        </div>
+                        <div class="header__right--users">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </header>
+                <!-- end <header>-->
+                
+                <main id="main">
+                    <div class="sales">
+                        <div class="item">
+                            <p class="title">Tồn kho</p>
+                            <p id="stockCount" class="quality">0<span> Cái</span></p>
+                        </div>
+                        <div class="item">
+                            <p class="title">Doanh thu hôm nay</p>
+                            <p id="revenueToday" class="money">0<span>đ</span></p>
+                        </div>
+                        <div class="item">
+                            <p class="title">Doanh số hàng tháng</p>
+                            <p id="revenueMonth" class="money">0<span>đ</span></p>
+                        </div>
+                        <div class="item">
+                            <p class="title">Doanh số hàng năm</p>
+                            <p id="revenueYear" class="money">0<span>đ</span></p>
+                        </div>
+                    </div>
+                    <div class="info__sales">
+                        <div class="charts">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        <div class="recentOrders">
+                            <div class="recentOrders__header">
+                                <h3>Đơn hàng gần đây</h3>
+                                <a href="#" class="viewAll">Xem tất cả</a>
+                            </div>
+                            <div class="recentOrders__frame">
+                                <div class="recentOrders__list">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Sản phẩm</th>
+                                                <th>Giá</th>
+                                                <th>Còn Hàng</th>
+                                                <th>Tổng số đơn</th>
+                                                <th>Chưa giải giao hàng</th>
+                                                <th>Hủy đơn</th>
+                                                <th>Đã giao</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    <div class="recentOrders__info">
+                                                        <div class="img"><img src="../asset/img/dummy.jpg" alt="Samsung Galaxy S21" width="30" height="30"></div>
+                                                        <p class="name">Điện thoại Samsung Galaxy S21Điện thoại Samsung Galaxy S21Điện thoại Samsung Galaxy S21Điện thoại Samsung Galaxy S21Điện thoại Samsung Galaxy S21
+
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="price">12,000,000 <span>VND</span></p>
+                                                </td>
+                                                <td>
+                                                    <p class="inStock">1234</p>
+                                                </td>
+                                                <td>
+                                                    <p class="totalOrder">325</p>
+                                                </td>
+                                                <td>
+                                                    <p class="pending">100</p>
+                                                </td>
+                                                <td>
+                                                    <p class="canceled">100</p>
+                                                </td>
+                                                <td>
+                                                    <p class="delevered">150</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>
+                                                    <div class="recentOrders__info">
+                                                        <div class="img"><img src="../asset/img/dummy.jpg" alt="Samsung Galaxy S21" width="30" height="30"></div>
+                                                        <p class="name">Điện thoại Samsung Galaxy S21</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="price">12,000,000 <span>VND</span></p>
+                                                </td>
+                                                <td>
+                                                    <p class="inStock">1234</p>
+                                                </td>
+                                                <td>
+                                                    <p class="totalOrder">325</p>
+                                                </td>
+                                                <td>
+                                                    <p class="pending">100</p>
+                                                </td>
+                                                <td>
+                                                    <p class="canceled">100</p>
+                                                </td>
+                                                <td>
+                                                    <p class="delevered">150</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>
+                                                    <div class="recentOrders__info">
+                                                        <div class="img"><img src="../asset/img/dummy.jpg" alt="Samsung Galaxy S21" width="30" height="30"></div>
+                                                        <p class="name">Điện thoại Samsung Galaxy S21</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="price">12,000,000 <span>VND</span></p>
+                                                </td>
+                                                <td>
+                                                    <p class="inStock">1234</p>
+                                                </td>
+                                                <td>
+                                                    <p class="totalOrder">325</p>
+                                                </td>
+                                                <td>
+                                                    <p class="pending">100</p>
+                                                </td>
+                                                <td>
+                                                    <p class="canceled">100</p>
+                                                </td>
+                                                <td>
+                                                    <p class="delevered">150</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>
+                                                    <div class="recentOrders__info">
+                                                        <div class="img"><img src="../asset/img/dummy.jpg" alt="Samsung Galaxy S21" width="30" height="30"></div>
+                                                        <p class="name">Điện thoại Samsung Galaxy S21</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="price">12,000,000 <span>VND</span></p>
+                                                </td>
+                                                <td>
+                                                    <p class="inStock">1234</p>
+                                                </td>
+                                                <td>
+                                                    <p class="totalOrder">325</p>
+                                                </td>
+                                                <td>
+                                                    <p class="pending">100</p>
+                                                </td>
+                                                <td>
+                                                    <p class="canceled">100</p>
+                                                </td>
+                                                <td>
+                                                    <p class="delevered">150</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>
+                                                    <div class="recentOrders__info">
+                                                        <div class="img"><img src="../asset/img/dummy.jpg" alt="Samsung Galaxy S21" width="30" height="30"></div>
+                                                        <p class="name">Điện thoại Samsung Galaxy S21</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="price">12,000,000 <span>VND</span></p>
+                                                </td>
+                                                <td>
+                                                    <p class="inStock">1234</p>
+                                                </td>
+                                                <td>
+                                                    <p class="totalOrder">325</p>
+                                                </td>
+                                                <td>
+                                                    <p class="pending">100</p>
+                                                </td>
+                                                <td>
+                                                    <p class="canceled">100</p>
+                                                </td>
+                                                <td>
+                                                    <p class="delevered">150</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>
+                                                    <div class="recentOrders__info">
+                                                        <div class="img"><img src="../asset/img/dummy.jpg" alt="Samsung Galaxy S21" width="30" height="30"></div>
+                                                        <p class="name">Điện thoại Samsung Galaxy S21</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="price">12,000,000 <span>VND</span></p>
+                                                </td>
+                                                <td>
+                                                    <p class="inStock">1234</p>
+                                                </td>
+                                                <td>
+                                                    <p class="totalOrder">325</p>
+                                                </td>
+                                                <td>
+                                                    <p class="pending">100</p>
+                                                </td>
+                                                <td>
+                                                    <p class="canceled">100</p>
+                                                </td>
+                                                <td>
+                                                    <p class="delevered">150</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="pagination" class="pagination" style="margin-top: 20px; text-align: center;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="topSelling">
+                        <h3>Sản phẩm bán chạy</h3>
+                        <div class="topSelling__list swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide topSelling__item">
+                                    <div class="topSelling__item--img"><img src="../asset/img/realme-c71-trang-thumb-600x600.jpg" width="200" height="200" alt="realme C71 4GB/128GB"></div>
+                                    <div class="topSelling__item--info">
+                                        <p class="name">realme C71 4GB/128GB first</p>
+                                        <p class="screen">
+                                            <span class="screen__tag">HD+</span>
+                                            <span class="screen__tag">6.67"</span>
+                                        </p>
+                                         <p class="price">3.990.000</p>
+                                        <div class="rate_selling">
+                                            <div class="rate">
+                                                <i class="fa fa-star" aria-hidden="true"></i>5
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide topSelling__item">
+                                    <div class="topSelling__item--img"><img src="../asset/img/realme-c71-trang-thumb-600x600.jpg" width="200" height="200" alt="realme C71 4GB/128GB"></div>
+                                    <div class="topSelling__item--info">
+                                        <p class="name">realme C71 4GB/128GB</p>
+                                        <p class="screen">
+                                            <span class="screen__tag">HD+</span>
+                                            <span class="screen__tag">6.67"</span>
+                                        </p>
+                                         <p class="price">3.990.000</p>
+                                        <div class="rate_selling">
+                                            <div class="rate">
+                                                <i class="fa fa-star" aria-hidden="true"></i>5
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide topSelling__item">
+                                    <div class="topSelling__item--img"><img src="../asset/img/realme-c71-trang-thumb-600x600.jpg" width="200" height="200" alt="realme C71 4GB/128GB"></div>
+                                    <div class="topSelling__item--info">
+                                        <p class="name">realme C71 4GB/128GB</p>
+                                        <p class="screen">
+                                            <span class="screen__tag">HD+</span>
+                                            <span class="screen__tag">6.67"</span>
+                                        </p>
+                                         <p class="price">3.990.000</p>
+                                        <div class="rate_selling">
+                                            <div class="rate">
+                                                <i class="fa fa-star" aria-hidden="true"></i>5
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide topSelling__item">
+                                    <div class="topSelling__item--img"><img src="../asset/img/realme-c71-trang-thumb-600x600.jpg" width="200" height="200" alt="realme C71 4GB/128GB"></div>
+                                    <div class="topSelling__item--info">
+                                        <p class="name">realme C71 4GB/128GB</p>
+                                        <p class="screen">
+                                            <span class="screen__tag">HD+</span>
+                                            <span class="screen__tag">6.67"</span>
+                                        </p>
+                                         <p class="price">3.990.000</p>
+                                        <div class="rate_selling">
+                                            <div class="rate">
+                                                <i class="fa fa-star" aria-hidden="true"></i>5
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide topSelling__item">
+                                    <div class="topSelling__item--img"><img src="../asset/img/realme-c71-trang-thumb-600x600.jpg" width="200" height="200" alt="realme C71 4GB/128GB"></div>
+                                    <div class="topSelling__item--info">
+                                        <p class="name">realme C71 4GB/128GB</p>
+                                        <p class="screen">
+                                            <span class="screen__tag">HD+</span>
+                                            <span class="screen__tag">6.67"</span>
+                                        </p>
+                                         <p class="price">3.990.000</p>
+                                        <div class="rate_selling">
+                                            <div class="rate">
+                                                <i class="fa fa-star" aria-hidden="true"></i>5
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide topSelling__item">
+                                    <div class="topSelling__item--img"><img src="../asset/img/realme-c71-trang-thumb-600x600.jpg" width="200" height="200" alt="realme C71 4GB/128GB"></div>
+                                    <div class="topSelling__item--info">
+                                        <p class="name">realme C71 4GB/128GB</p>
+                                        <p class="screen">
+                                            <span class="screen__tag">HD+</span>
+                                            <span class="screen__tag">6.67"</span>
+                                        </p>
+                                         <p class="price">3.990.000</p>
+                                        <div class="rate_selling">
+                                            <div class="rate">
+                                                <i class="fa fa-star" aria-hidden="true"></i>5
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </main>
+                <!-- end <main>-->
+    
+                <footer id="footer">
+                    <div class="to-top"><a href="#wrapper"></a></div>
+                </footer>
+                <!-- end <footer> -->
+            </div>
+        </div>
+    </div>
+    <!-- end #wrapper -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.9.0/axios.min.js" integrity="sha512-FPlUpimug7gt7Hn7swE8N2pHw/+oQMq/+R/hH/2hZ43VOQ+Kjh25rQzuLyPz7aUWKlRpI7wXbY6+U3oFPGjPOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../asset/js/top.js"></script>
+    <script type="module" src="../controller/dashboard.js"></script>
+
+    <script>
+       
+    </script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 5,
+            spaceBetween: 30,
+            loop: true,
+            centeredSlides: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                "320": {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                },
+                "@0.75": {
+                slidesPerView: 2,
+                spaceBetween: 10,
+                },
+                "@1.00": {
+                slidesPerView: 3,
+                spaceBetween: 20,
+                },
+                "@1.50": {
+                slidesPerView: 4,
+                spaceBetween: 30,
+                },
+            },
+        });
+    </script>
+</body>
+</html>
