@@ -12,17 +12,47 @@
     .header__right--notification, .header__right--users {
         @include size(40px);
     }
-    .header__left--search {
-        @include size(40px);
-    }
-    .header__left--search .icon {
-        @include size(40px);
-        &::before {
-            @include size(16px);
-            transform: translate(-3px, -3px);
+    .sidebar_active {
+        .sidebar__menu {
+            li.disable {
+                &::before {
+                    opacity: 1;
+                }
+            }
+            .txt {
+                opacity: 1;
+            }
         }
-        &::after {
-            transform: translate(5px, 5px) rotate(315deg);
+    }
+    .header__left {
+        &--search {
+            overflow: visible;
+            @include size(40px);
+            &.active {
+                width: 40px;
+                .input {
+                    opacity: 1;
+                    pointer-events: all
+                }
+            }
+            .icon {
+                @include size(40px);
+                &::before {
+                    @include size(16px);
+                    transform: translate(-3px, -3px);
+                }
+                &::after {
+                    transform: translate(5px, 5px) rotate(315deg);
+                }
+            }
+            .input {
+                position: fixed;
+                top: 60px;
+                width: 100vw;
+                left: calc((100vw - 100%) / -2);
+                opacity: 0;
+                pointer-events: none;
+            }
         }
     }
 
@@ -42,6 +72,11 @@
     .products {
         &__h3 {
             font-size: 8px;
+        }
+        &__sort {
+            select {
+                height: 40px;
+            }
         }
         &__cnt {
             padding: 15px;
