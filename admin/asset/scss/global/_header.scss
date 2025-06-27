@@ -5,14 +5,20 @@ header {
     --width-sidebar: 80px;
     .sidebar {
         &__menu {
+            li.disable {
+                &::before {
+                    opacity: 0;
+                }
+            }
             .txt {
-                color: transparent;
+                opacity: 0;
             }
         }
         &__logo {
             padding: 15px 10px;
         }
     }
+
 }
 .sidebar {
     width: $width-sidebar;
