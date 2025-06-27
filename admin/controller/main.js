@@ -6,28 +6,11 @@ const services = new ProductService();
 const getEle = (id) => document.getElementById(id);
 
 const getListProduct = () => {
-    // getEle("loader").style.display = "block";
-    const promise = services.getListProductApi();
-    promise
-        .then((result) => {
-        // Loader hide
-            renderListProduct(result.data);
-            // getEle("loader").style.display = "none";
-        })
-        .catch((error) => {
-            // getEle("loader").style.display = "none";
-            console.log(error);
-        });
-
     services.getListProductApi()
     .then((result) => {
         renderListProduct(result.data);
-        // getEle("loader").style.display = "none";
     })
-    .catch((error) => {
-        // getEle("loader").style.display = "none";
-        console.log(error);
-    });
+    .catch(console.log);
 };
 
 const modal = document.getElementById('productModal');
@@ -228,13 +211,20 @@ searchInput.addEventListener("input", function () {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
         const keyword = this.value.toLowerCase();
+        // Nếu ô tìm kiếm trống → gọi lại API, render toàn bộ
         services.getListProductApi()
             .then((result) => {
+                if (!keyword) {
+                    renderListProduct(result.data);
+                    return;
+                }
+
                 const filtered = result.data.filter(product => {
                     // Nếu muốn tìm kiếm thêm theo thuộc tính khác thì thêm vào ví dụ muốn tìm theo screen thì => ${product.screen}
                     const combinedValues = `
                         ${product.name}
                     `.toLowerCase();
+
                     return combinedValues.includes(keyword);
                 });
 
@@ -242,6 +232,10 @@ searchInput.addEventListener("input", function () {
             })
             .catch(console.log);
     }, 300);
+})
+getEle("clearSearch").addEventListener("click", () => {
+    searchInput.value = "";
+    searchInput.dispatchEvent(new Event("input"));
 });
 // End tìm kiếm
 
