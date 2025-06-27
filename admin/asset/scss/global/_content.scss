@@ -557,29 +557,30 @@ h3 {
 }
 
 .notif__dropdown {
-  position: absolute;
-  top: 40px;
-  right: 0;
-  background: white;
-  color: black;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  width: 250px;
-  z-index: 1000;
-  padding: 10px 0;
-}
-.notif__dropdown ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.notif__dropdown ul li {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-}
-.notif__dropdown ul li:last-child {
-  border-bottom: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: white;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 250px;
+    z-index: 1000;
+    padding: 10px 0;
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
 }
 
 .error__message {

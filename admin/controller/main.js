@@ -114,7 +114,7 @@ const onAddProduct = () => {
         .catch((error) => {
             console.log(error);
         });
-        closeModal();
+    closeModal();
     showNotification(nameProduct);   
 }
 window.onBtnAdd = () => {
@@ -198,6 +198,7 @@ const onUpdateProduct = (id) => {
         .catch((error) => {
             console.log(error);
         });
+    closeModal();
 };
 window.onUpdateProduct = onUpdateProduct;
 // End cập nhật sản phẩm
