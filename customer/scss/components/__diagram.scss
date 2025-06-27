@@ -1,0 +1,360 @@
+/*SƠ ĐỒ TỔ CHỨC*/
+.diagram {
+	--h-l: 7.45rem;
+	--w: 16.6rem;
+	padding-top: 12rem;
+	.decor.decor {
+		top: -1.5rem;
+		right: 95%;
+	}
+}
+.diagram-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.diagram-st > p {
+	position: relative;
+	z-index: 1;
+	background-color: wheat;
+	color: $t-w-cl;
+	font-weight: 600;
+	font-size: 1.4rem;
+	height: 9rem;
+	padding: 1rem;
+	text-transform: uppercase;
+	text-align: center;
+	transition: all .3s ease;
+	border: 1px solid wheat;
+	@include flex-mid;
+	&:hover {
+		background-color: $bg-w-cl;
+		color: wheat;
+	}
+}
+.lv-1.diagram-st {
+	position: relative;
+	margin-bottom: 11.5rem;
+	p {
+		width: 44rem;
+		background-color: $bg-w-cl;
+		color: wheat;
+		border: 1px solid wheat;
+		font-size: 2.4rem;
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		left: 50%;
+		bottom: -0.1rem;
+		transform: translate(-50%, 100%);
+		height: 11.5rem;
+		width: 0.1rem;
+		background-color: wheat;
+	}
+	&:hover {
+		background-color: wheat;
+		color: $t-w-cl;
+	}
+}
+.lv-2.diagram-st {
+	position: relative;
+	margin-bottom: calc(var(--h-l) * 2);
+	p {
+		width: 39.2rem;
+		font-size: 2rem;
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		left: 50%;
+		bottom: -0.2rem;
+		transform: translate(-50%, 100%);
+		height: var(--h-l);
+		width: 0.1rem;
+		background-color: wheat;
+	}
+}
+.lv-3-wrap {
+	position: relative;
+	width: 100%;
+	margin-bottom: calc(var(--h-l) * 2);
+	display: flex;
+	justify-content: space-between;
+	&:before {
+		content: '';
+		position: absolute;
+		top: calc(var(--h-l) * -1);
+		left: 50%;
+		transform: translateX(-50%);
+		height: 0.1rem;
+		width: calc(100% - var(--w));
+		background-color: wheat;
+	}
+}
+.lv-3 {
+	position: relative;
+	width: var(--w);
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -100%);
+		height: var(--h-l);
+		width: 0.1rem;
+		background-color: wheat;
+	}
+}
+.lv-4-wrap {
+	position: relative;
+	width: 100%;
+	display: flex;
+	.left,
+	.right {
+		width: 50%;
+	}
+	.left {
+		> div {
+			position: relative;
+			width: calc(var(--w) * 3 + 2.8rem);
+			display: flex;
+			justify-content: space-between;
+			&:before {
+				content: '';
+				position: absolute;
+				left: 50%;
+				top: calc(var(--h-l) * -1);
+				transform: translateX(-50%);
+				height: 0.1rem;
+				width: calc(100% - var(--w));
+				background-color: wheat;
+			}
+			&:after {
+				content: '';
+				position: absolute;
+				left: 50%;
+				top: -0.1rem;
+				transform: translate(-50%, -100%);
+				height: calc(var(--h-l) * 2);
+				width: 0.1rem;
+				background-color: wheat;
+			}
+		}
+	}
+	.right {
+		position: relative;
+		padding-left: 9.5rem;
+		&:before {
+			content: '';
+			position: absolute;
+			bottom: 4.5rem;
+			left: -0.05rem;
+			height: 36rem;
+			width: 0.1rem;
+			background-color: wheat;
+		}
+		.lv-4 {
+			&:before {
+				display: none;
+			}
+			&:after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translate(-100%, -50%);
+				width: 9.5rem;
+				height: 0.1rem;
+				background-color: wheat;
+			}
+		}
+	}
+}
+.lv-4 {
+	position: relative;
+	width: var(--w);
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -100%);
+		height: var(--h-l);
+		width: 0.1rem;
+		background-color: wheat;
+	}
+}
+.lv-4-mobile {
+	display: none;
+	position: relative;
+	padding-left: var(--h-l);
+	&:before {
+		content: '';
+		position: absolute;
+		left: calc(var(--h-l) / 2);
+		bottom: var(--h-l);
+		width: 0.1rem;
+		height: 100%;
+		background-color: wheat;
+	}
+	.lv-4 {
+		margin-top: 1rem;
+		&:before {
+			display: none;
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translate(-100%, -50%);
+			height: 0.1rem;
+			width: calc(var(--h-l) / 2);
+			background-color: wheat;
+		}
+	}
+}
+@include max-media($bk-d-1440) {
+	.diagram {
+		--w: 14.6rem;
+	}
+}
+@include max-media($bk-d-1200) {
+	.lv-1.diagram-st {
+		margin-bottom: 7.45rem;
+		p {
+			font-size: 2rem;
+		}
+	}
+	.lv-2.diagram-st {
+		p {
+			font-size: 1.8rem;
+		}
+	}
+	.diagram {
+		--h-l: 3.725rem;
+		--w: 11.6rem;
+	}
+	.diagram-st > p {
+		font-size: 1.1rem;
+	}
+	.lv-4-wrap .left > div {
+		width: calc(var(--w) * 3 + 1.9rem);
+	}
+}
+@include max-media($bk-d-992) {
+	.diagram {
+		padding-top: 8rem;
+		--w: 8.6rem;
+		.decor.decor {
+			// top: -5rem;
+		}
+	}
+	.diagram-st > p {
+		height: 7rem;
+		padding: 0.5rem;
+	}
+	.lv-4-wrap {
+		.right {
+			&:before {
+				bottom: 3.5rem;
+			}
+		}
+	}
+}
+@include max-media($bk-d-768) {
+	.diagram {
+		--h-l: 3rem;
+		--w: 100%;
+	}
+	.lv-1.diagram-st {
+		margin-bottom: calc(var(--h-l) * 2);
+		width: 100%;
+		p {
+			width: 100%;
+			font-size: 1.8rem;
+		}
+	}
+	.lv-2.diagram-st {
+		padding: 0 1rem;
+		width: 100%;
+		p {
+			font-size: 1.4rem;
+			width: 100%;
+		}
+		&:before {
+			bottom: -0.1rem;
+		}
+	}
+	.diagram-st > p {
+		height: 6rem;
+	}
+	.lv-3-wrap {
+		padding-left: 3rem;
+		margin-bottom: 1rem;
+		flex-wrap: wrap;
+		&:before {
+			width: calc(50% - calc(var(--h-l) / 2));
+			left: calc(var(--h-l) / 2);
+			transform: translate(0);
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			top: calc(var(--h-l) * -1);
+			left: calc(var(--h-l) / 2);
+			height: 100%;
+			width: 0.1rem;
+			background-color: wheat;
+		}
+	}
+	.lv-3 {
+		margin-bottom: 1rem;
+		&:before {
+			display: none;
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translate(-100%, -50%);
+			width: calc(var(--h-l) / 2);
+			height: 0.1rem;
+			background-color: wheat;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.lv-4-wrap {
+		&:before {
+			display: none;
+		}
+		.left {
+			display: none;
+		}
+		.right {
+			width: var(--w);
+			padding-left: var(--h-l);
+			&::before {
+				height: 7rem;
+				bottom: 3rem;
+				left: 1.5rem;
+			}
+			.lv-4:after {
+				width: calc(var(--h-l) / 2);
+			}
+		}
+	}
+	.lv-4-wrap-mobile {
+		height: auto;
+		&:after {
+			top: var(--h-l);
+		}
+	}
+	.lv-4-mobile {
+		display: block;
+	}
+}

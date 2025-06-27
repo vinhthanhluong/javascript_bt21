@@ -1,0 +1,138 @@
+.footer{
+    background-color: transparent;
+    margin-top: auto;
+    padding: 120px 0;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include max-media($bk-d-1200){
+        padding: 100px 0 80px;
+    }
+    @include max-media($bk-d-992){
+        padding: 60px 0 40px;
+    }
+    @include max-media($bk-d-768){
+        padding: 40px 0;
+    }
+    .logo{
+    }
+
+    .columns{
+        justify-content: space-between;
+    }
+
+    .column{
+        &.lg{
+            @include max-media($bk-d-992){
+                width:100%;
+                margin-bottom: 10px;
+            }
+        }
+        &.txt{
+            width: calc(100% / 12 * 7 + 30px);
+            @include max-media($bk-d-768){
+                width: 100%;
+            }
+            
+        }
+
+        &.inf{
+            width: calc(100% / 12 * 2 + 30px);
+            @include max-media($bk-d-992){
+                width: calc(100% / 12 * 4 - 30px);
+            }
+            @include max-media($bk-d-768){
+                width: 100%;
+            }
+        }
+    }
+
+    .ft-tt{
+        margin-bottom: 16px;
+        @include max-media($bk-d-992){
+            margin-bottom: 12px;
+        }
+        @include max-media($bk-d-768){
+            margin-bottom: 8px;
+        }
+    }
+
+    .ft-content{
+        line-height: 1.5;
+
+        .list{
+            padding: 15px 0;
+            @include  max-media($bk-d-992){
+                padding: 8px 0;
+            }
+
+            .ft-ds{
+                @include max-media(500px){
+                    font-size: 10px !important;
+                }
+            }
+        }
+
+        .item{
+            display: flex;
+        }
+
+        .ft-icon{
+            padding-right: 15px;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+    }
+
+    .ft-t{
+        span{
+            text-decoration: underline;
+        }
+    }
+
+   
+
+    .ft-itm{
+        display: flex;
+    }
+
+    .ft-link{
+        transition: all .3s ease;
+        &:hover{
+            color: $red-cl;
+        }
+    }
+
+    .ft-follow{
+        margin-top: 70px;
+        @include max-media($bk-d-1440){
+            margin-top: 40px;
+        }
+        @include max-media($bk-d-992){
+            margin-top: 30px;
+        }
+        @include max-media($bk-d-768){
+            margin-top: 20px;
+        }
+
+        .ft-tt{
+            margin-bottom: 0;
+        }
+    }
+    
+    .ft-social{
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+
+        .social-item{
+            &:not(:first-child){
+                margin-left: 8px;
+            }
+            transition: all .3s ease;
+            &:hover{
+                transform: translateY(-5px);
+            }
+        }
+    }
+}

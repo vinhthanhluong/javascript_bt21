@@ -1,0 +1,66 @@
+//primary color
+$b-cl: #000000;
+$w-cl: #fff;
+$g-cl: #898989;
+$dark-cl: #333;
+$light-cl: #fff;
+
+
+
+//color-text
+$t-b-cl: $b-cl;
+$t-w-cl: $w-cl;
+$t-g-cl: $g-cl;
+
+
+//color-background
+$bg-b-cl: $b-cl;
+$bg-w-cl: $w-cl;
+$bg-g-cl: $g-cl;
+
+
+//color design
+$main-cl: #FBE74F;
+$orange-cl: #FFA642;
+$red-cl:#F16044;
+
+$yl-cl:#F8C537;
+
+
+$border-cl: #e1e1e1;
+$g-E5E5-cl:#E5E5E5;
+$g-ECEC-cl:#ECECEC;
+
+//font-famili , font-size
+$fz-base: 10px;
+$font-body: 'SVN-Biennale';
+$fz-body: 14px;
+$lh-body: 1.4;
+$cl-body: #000000;
+
+
+//break point
+$bk-1900: 1900px;
+$bk-1440: 1440px;
+$bk-1200: 1200px;
+$bk-1024: 1024px;
+$bk-992: 992px;
+$bk-768: 768px;
+$bk-576: 576px;
+
+//break point - 1
+$bk-d-1900: $bk-1900 - 1;
+$bk-d-1440: $bk-1440 - 1;
+$bk-d-1200: $bk-1200 - 1;
+$bk-d-1024: $bk-1024 - 1;
+$bk-d-992: $bk-992 - 1;
+$bk-d-768: $bk-768 - 1;
+$bk-d-576: $bk-576 - 1;
+
+/*width*/
+$w-scroll: 0px;
+$max-width: 100%;
+$container-full-width: 1920px;
+$container-width: 1200px;
+$padding: 15px;
+

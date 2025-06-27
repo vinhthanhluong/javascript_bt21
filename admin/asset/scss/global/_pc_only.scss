@@ -1,0 +1,131 @@
+@media screen and (hover:hover) {
+    .sidebar_active {
+        --width-sidebar: 80px;
+        .sidebar__menu li a:hover {
+            .txt {
+                color: $main-cl;
+            }
+        }
+    }
+    .products__cnt tbody tr:hover {
+        background-color: rgba($color: #FBE74F, $alpha: .2);
+    }
+}
+
+@media (width >= 769px) {
+    #lightboxOverlay,
+    #lightbox {
+        min-width: var(--content-width) !important;
+        width: 100% !important;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    .to-top {
+        &:hover {
+            background: $main-cl;
+        }
+    }
+
+    .no-scroll {
+        overflow: hidden;
+        -ms-touch-action: none;
+        touch-action: none;
+        -webkit-overflow-scrolling: auto;
+    }
+}
+
+@media (769px <= width <= 1880px) {
+
+}
+/* END screen-min:769px && screen-max:1880px */
+
+@media (769px <= width <= 1560px) {
+
+}
+/* END screen-min:769px && screen-max:1560px */
+
+@media (769px <= width <= 1440px) {
+    
+}
+/* END screen-min:769px && screen-max:1440px */
+
+@media (320px <= width <= 1160px) {
+    .sidebar {
+        --width-sidebar: 264px !important;
+        overflow: hidden;
+        z-index: 100;
+        transform: translateX(-100%);
+        &.active {
+            transform: translateX(0);
+            .sidebar__menu .txt {
+                color: inherit;
+            }
+        }
+    }
+    .wrapper__main {
+        width: 100%;
+    }
+    .sidebar_active {
+        .wrapper__main {
+            width: 100%;
+        }
+    }
+    header {
+        width: calc(100% - (1.875rem * 2));
+        right: 1.875rem;
+        transition: 0.5s;
+    }
+
+    .info__sales {
+        flex-direction: column;
+        align-items: center;
+        .charts {
+            width: 100%;
+            height: 300px;
+            canvas {
+                height: 100% !important;
+            }
+        }
+        .recentOrders {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+
+    .sidebar_active {
+        overflow: hidden;
+        .wrapper__main {
+            position: relative;
+            z-index: 1;
+            &::before {
+                content: '';
+                position: absolute;
+                width: 100vw;
+                height: 100%;
+                background-color: #000;
+                opacity: .8;
+                z-index: 50;
+                transition: .5s;
+            }
+        }
+        header {
+            width: calc(100% - 264px - (1.875rem * 2));
+            z-index: 61;
+        }
+    }
+
+    .info__sales .charts {
+        height: min(70vw, 400px);
+    }
+}
+/* END screen-min:320px && screen-max:992px */
+
+@media (320px <= width <= 992px) {
+    .sales {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* END screen-min:320px && screen-max:992px */

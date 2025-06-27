@@ -1,0 +1,58 @@
+// star - line 
+.box-star-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.star {
+    position: relative;
+    display: inline-block;
+
+    .empty-stars,
+    .filled-stars {
+        text-shadow: none;
+        width: 100%;
+        white-space: nowrap;
+        font-size: 10px;
+        line-height: 1;
+        height: 14px;
+
+        i {
+            margin: 2px 1px;
+        }
+    }
+
+    .empty-stars {
+        color: #ffd84e;
+    }
+
+    .filled-stars {
+        color: #ffd84e;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        overflow: hidden;
+    }
+}
+
+.process {
+    max-width: calc(100% - 8rem);
+    width: 13rem;
+    margin-right: auto;
+    margin-left: 5px;
+    background-color: #eeeeee;
+    border-radius: 999px;
+    height: 5px;
+
+    div {
+        height: 100%;
+        background-color: red;
+        border-radius: 999px;
+    }
+}
+
+////
+
